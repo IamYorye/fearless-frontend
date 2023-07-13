@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const selectTag = document.getElementById('conference');
     const loadingIcon = document.getElementById('loading-conference-spinner');
     const successAlert = document.getElementById("success-message")
+    const createdForm = document.getElementById("create-attendee-form")
 
     const url = 'http://localhost:8000/api/conferences/';
     const response = await fetch(url);
@@ -14,6 +15,10 @@ window.addEventListener('DOMContentLoaded', async () => {
             option.innerHTML = conference.name;
             selectTag.appendChild(option);
         }
+
+        loadingIcon.classList.add('d-none')
+        selectTag.classList.remove('d-none')
+
         const formTag = document.getElementById('create-attendee-form')
         formTag.addEventListener('submit', async event => {
             event.preventDefault()
@@ -33,11 +38,11 @@ window.addEventListener('DOMContentLoaded', async () => {
                 const newAttendee = await response.json()
                 console.log(newAttendee)
             }
+            createdForm.classList.add('d-none')
+            successAlert.classList.remove('d-none')
         })
 
-        loadingIcon.classList.add('d-none')
-        selectTag.classList.remove('d-none')
-        successAlert.classList.remove('d-none')
+
 
     }
 
