@@ -40,6 +40,7 @@ AUTH_USER_MODEL = "accounts.User"
 
 INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
+    "djwto",
     "events.apps.EventsConfig",
     "presentations.apps.PresentationsConfig",
     "corsheaders",
@@ -50,6 +51,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+DJWTO_MODE = "TWO-COOKIES"
+DJWTO_ACCESS_TOKEN_LIFETIME = None
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CORS_ALLOW_CREDENTIALS = True
+
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
