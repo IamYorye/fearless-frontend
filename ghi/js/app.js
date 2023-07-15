@@ -8,7 +8,7 @@ function createCard(name, description, pictureUrl, starts, ends, location) {
     const formattedStarts = formatDate(starts);
     const formattedEnds = formatDate(ends);
     return `
-      <div class="card">
+      <div class="card w-25 m-4">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">${name}</h5>
@@ -34,6 +34,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             throw new Error("An error has occurred")
         } else {
             const data = await response.json();
+            const cardContainers = document.querySelectorAll('.card-columns')
 
             for (let conference of data.conferences) {
                 const detailUrl = `http://localhost:8000${conference.href}`;
