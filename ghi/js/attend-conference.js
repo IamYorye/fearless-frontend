@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (response.ok) {
         const data = await response.json();
 
+        const selectTag = document.getElementById('conference');
         for (let conference of data.conferences) {
             const option = document.createElement('option');
             option.value = conference.href;
